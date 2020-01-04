@@ -6,6 +6,7 @@
 - [首页点击按钮跳转页面](https://github.com/uweier/python_pj/blob/master/image/shouye.png)
 - [输入文本框筛选国家](https://github.com/uweier/python_pj/blob/master/image/number.png)[输出的结果](https://github.com/uweier/python_pj/blob/master/image/number_result.png)
 - [下拉列表筛选国家](https://github.com/uweier/python_pj/blob/master/image/gongzuo.png)[输出的结果](https://github.com/uweier/python_pj/blob/master/image/gongzuo_result.png)
+
 ## 【10%】 github文档（templates、static、app.py、数据文档（下载））
 - [templates]()
 - [static]()
@@ -14,8 +15,37 @@
 
 ## 【20%】 技术文档书写
 ### HTML档描述 30%
+- 所有的HTML文件放置在templates文件夹中，其中base.html为基模板，其余html皆继承该基模板。
+- viewlog.html对应系统日志。
+- world_number.html和world_number_result.html分别对应世界抑郁症总人数页面和其筛选后的结果页面，以此类推，其余html文件皆对应各自的页面。
+
+所有HTML文件如下图所示：
+![HTML文件](https://github.com/uweier/python_pj/blob/master/image/html_ms.png)
 
 ### Python档描述 30%
+[python档下载]()
+
+1. 安装并导入pandas、pyecharts、cufflinks、plotly等第三方包
+2. pandas读csv文件
+3. pyecharts的模块画地图、条形图等，并将部分图以html文件的方式导出
+4. 安装Flask环境，导入flask和render_template函数，创建Flask对象实例
+5. 创建url和函数，用url修饰函数，呈现不同的HTML页面
+    - route(url) url:endpoint
+    - methods (GET、POST)
+    - 视图函数 def
+6. 根据不同页面的不同功能写函数。以下面代码为例，函数yi_yu_select_4()将html文件读入并赋值给plot_all_4，使用resquest.form将用户输入传到html中对应的name中。
+```
+@app.route('/world_unemployment',methods=['POST'])
+def yi_yu_select_4() -> 'html':
+    with open("患病率与失业率对比图.html", encoding="utf8", mode="r") as f4: 
+        plot_all_4 = "".join(f4.readlines())
+    the_region = request.form["the_region_selected_4"]
+    print(the_region)
+    title = '世界抑郁症情况及其相关因素研究'
+    return render_template('world_unemployment.html',
+                            the_plot_all_4 = plot_all_4,
+                            the_title = title,)
+```
 
 ### Web App动作描述 40%
 
@@ -26,11 +56,49 @@
 ### 是否含有合适的数据结构嵌套（20%）
 
 ### 是否含有合适的推导式（20%）
+pyecharts数据处理时：
+```
+# 推导式 处理x轴
+x轴 = [int(x) for x in df0.columns.values[1:]]
+x轴_zx = [str(x) for x in x轴]
+```
+交互代码的改写：
+```
+# 原来的代码：
+#     if search in countries.keys():
+#         contents = [countries[search]]
+#     else:
+#         contents = ['您搜索的结果不存在！！']
+
+# 改为推导式：
+    contents = [countries[search] if search in countries.keys() else '您搜索的结果不存在！！']
+```
 
 ### 是否含有适当的条件判断（20%）
 
 ### python 文档与html文档的数据交互（20%）
 
+```
+@app.route('/world_education_result',methods=['POST'])
+def yi_yu_select_6() -> 'html':
+    the_region = request.form["the_region_selected_6"]
+    print(the_region)
+    
+    dfs = df.query("地区 in ['{}']".format(the_region))
+
+    data_str6 = dfs.to_html()
+   
+    fig = dfs.set_index('地区').T.iplot(kind="bar",  xTitle="地区/年份",yTitle="地区数据", title="地区数据", asFigure=True)
+    py.offline.plot(fig, filename="学历就业结果.html",auto_open=False)
+    with open("学历就业结果.html", encoding="utf8", mode="r") as f6:
+        plot_all_6 = "".join(f6.readlines())
+
+    title = '世界抑郁症情况及其相关因素研究'
+    return render_template('world_education_result.html',
+                            the_plot_all_6 = plot_all_6,
+                            the_title = title,
+                            the_res_6 = data_str6,)
+```
 
 ## 【10%】 自定义函数与模块功能（是否存在与合理)
 
