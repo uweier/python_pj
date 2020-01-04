@@ -49,14 +49,23 @@
 ## 【10%】 加分项
 ### viewlog日志
 第一次查找“地区”
+
 ![第一次输入“地区”](https://github.com/uweier/python_pj/blob/master/image/viewlog1.png)
+
 第一次输出的结果
+
 ![第一次输出的结果](https://github.com/uweier/python_pj/blob/master/image/viewlog2.png)
+
 第二次查找“地区”
+
 ![第二次输入“地区”](https://github.com/uweier/python_pj/blob/master/image/viewlog3.png)
+
 第二次输出的结果
+
 ![第二次输出的结果](https://github.com/uweier/python_pj/blob/master/image/viewlog4.png)
+
 两次的日志记录
+
 ![两次日志记录](https://github.com/uweier/python_pj/blob/master/image/viewlog5.png)
 
 <b>代码展示：</b>
@@ -69,6 +78,7 @@ def log_request(req:'flask_request',res:str) -> None:
         print(req.form, req.remote_addr, req.user_agent, res,file=log,sep='|')
         # print(str(dir(req)),res,file=log)
 ```
+
 ![函数的使用](https://github.com/uweier/python_pj/blob/master/image/viewlog6.png)
 
 
