@@ -75,23 +75,20 @@ def yi_yu_select_4() -> 'html':
 1. 后端伺服器启动：执行 app.py 启动后端伺服器，等待web请求。启动成功应出现：* Running on http://127.0.0.1:8004/ (Press CTRL+C to quit)
 2. 前端浏览器web 请求：访问 http://127.0.0.1:8004/ 启动前端web 请求
 3. 后端伺服器web 响应：app.py 中 执行 了@app.route('/') 下的 index()函数，产生《世界抑郁症情况及其相关因素研究》的HTML页面 
-4.前端浏览器收到web 响应：出现HTML，有HTML5表单的输入 input 类型(type) 为"SUBMIT"，变数名称(name)分别为"the_region_selected_1"，"the_region_selected_2"，"the_region_selected_3"，"the_region_selected_4"，"the_region_selected_7"，"the_region_selected_8"，"the_region_selected_9"
-5.前端浏览器web 请求：用户选取不同按键，点击后，则产生新的web 请求。以第一个为例，按照form元素中定义的method='POST' action='/world_number'，以POST为方法，动作为/world_number的web 请求
-6.后端服务器收到用户web 请求，匹配到@app.route('/world_number', methods=['POST'])的函数 yi_yu_select_1()
-7.def yi_yu_select_1() 函数，只是将前面pyecharts输出的html档读入，并存入plot_all_1，然后把用户提交的数据，以flask 模块request.form['the_region_selected_1']取到Web 请求中,使用flask模块render_template 函数把world_number.html模版输出。其中the_plot_all_1的值，对应plot_all_1之值。
-8.前端浏览器收到web 响应：world_number.html中the_plot_all_1的值正确的产生的话，前端浏览器会收到正确响应，看到地图。
+4. 前端浏览器收到web 响应：出现HTML，有HTML5表单的输入 input 类型(type) 为"SUBMIT"，变数名称(name)分别为"the_region_selected_1"，"the_region_selected_2"，"the_region_selected_3"，"the_region_selected_4"，"the_region_selected_7"，"the_region_selected_8"，"the_region_selected_9"
+5. 前端浏览器web 请求：用户选取不同按键，点击后，则产生新的web 请求。以第一个为例world_number，按照form元素中定义的method='POST' action='/world_number'，以POST为方法，动作为/world_number的web 请求
+6. 后端服务器收到用户web 请求，匹配到@app.route('/world_number', methods=['POST'])的函数 yi_yu_select_1()
+7. def yi_yu_select_1() 函数，只是将前面pyecharts输出的html档读入，并存入plot_all_1，然后把用户提交的数据，以flask 模块request.form['the_region_selected_1']取到Web 请求中,使用flask模块render_template 函数把world_number.html模版输出。其中the_plot_all_1的值，对应plot_all_1之值。
+8. 前端浏览器收到web 响应：world_number.html中the_plot_all_1的值正确的产生的话，前端浏览器会收到正确响应，看到地图。
 
 
-- Python代码模块和HTML代码块遵循Flask Jinja2规则，模块继承render_template(xxx.html,附加参数(传值给Web xxx.html界面))
-    - return ：
-        1. 传递函数的结果
-        2. 传递函数运行的过程
 
 
+- 【首页】点击按钮“总人数”、“患病率”，“男性与女性患者人数”，“患病率与失业率对比”，“每个妇女生育孩子数”，“世界人均GDP情况”、“主题观点总结”，即可跳转到对应页面；在各个页面点击按钮“首页”，即可跳转到【首页】。
 - 【前端页面】点击按钮“患病率”，即可跳转到【患病率页面】；【患病率页面】在“搜索框”输入地区名称，点击“确定”，页面即可跳转到【搜索结果页面】；【患病率页面】点击按钮“首页”，即可跳转到【前端首页】。
 - 【患病率页面】中，点击“播放”按键，即可实现地图轮播功能。
 
-## 【40%】 数据交互（数据复杂度（是否存在与合理））
+## 数据交互
 
 ### 是否含有复杂数据结构的循环（列表循环、字典循环、集合循环） （20%）
 
@@ -116,56 +113,36 @@ x_z_zx = [str(x) for x in x_z]
     contents = [countries[search] if search in countries.keys() else '您搜索的结果不存在！！']
 ```
 
+### python 文档与html文档的数据交互
+在world_hbl.html页面中的筛选地区功能里，用户在前端通过输入地区名称，即search = request.form['place']，form表单提交数据的input(input_name)，后端执行代码，使用for循环与if……else……筛选数据，存入contents中，指定传给world_hbl_result.html，然后在前端展示内容。
 
+## HTML界面
+### 实现数据的python——>HTML页面交互
+- 用户在前端html页面通过input name="the_region_selected_2"，提交表单数据
+- 后端python代码执行，指定将动作传给world_hbl.html，然后传递参数，返回plot_all_2、titles、contents、title的值
+- Jinja2方法用于返回 {{ the_plot_all_2 }} 在后端的值。
 
-### python 文档与html文档的数据交互（20%）
-数据的传输(中介变量)
-HTML（界面 .html name=""） 和 Python（服务端 .py）
-数据的传输
-1.HTML ---->Python代码传递
-(用户界面的交互行为（表单提交）)
+### 符合jinja2标准
 
-FLASK的方法：eg: request.form['user_color']
-
-2.Python ----> HTML (Python代码执行的结果
-（1.指定传给哪个HTML文件eg:results）
-2.传递数据(函数返回值))
-(接口)
-
-Jinja2方法 ： python函数返回值 render_template html：{{ the_color }}
+以base.html为例，{{ the_title }}为Jinja指令，指示将在呈现之前提供的一个值，对应后端代码中的title。
 ```
-@app.route('/world_education_result',methods=['POST'])
-def yi_yu_select_6() -> 'html':
-    the_region = request.form["the_region_selected_6"]
-    print(the_region)
-    
-    dfs = df.query("地区 in ['{}']".format(the_region))
+<!doctype html>
+<html lang="zh-CN" >
+    <head>
+        <title>{{ the_title }}</title>
+        <link rel="stylesheet" href="static/hf.css" />
+    </head>
+    <body>
+        {% block body %}
 
-    data_str6 = dfs.to_html()
-   
-    fig = dfs.set_index('地区').T.iplot(kind="bar",  xTitle="地区/年份",yTitle="地区数据", title="地区数据", asFigure=True)
-    py.offline.plot(fig, filename="学历就业结果.html",auto_open=False)
-    with open("学历就业结果.html", encoding="utf8", mode="r") as f6:
-        plot_all_6 = "".join(f6.readlines())
-
-    title = '世界抑郁症情况及其相关因素研究'
-    return render_template('world_education_result.html',
-                            the_plot_all_6 = plot_all_6,
-                            the_title = title,
-                            the_res_6 = data_str6,)
+        {% endblock %}
+    </body>
+</html>
 ```
-
-
-## 【10%】 HTML界面
-
-### 实现数据的python——>HTML页面交互（如果Python有数据循环、复杂的数据结构，请务必检查前端是否正确接收到同样的数据传递结果）（80%）
-
-### 符合jinja2标准（20%）
-
-## 【10%】上传pythonanywhere/提交域名完善的个人网站
+## pythonanywhere
 [http://huangyuhui.pythonanywhere.com/](http://huangyuhui.pythonanywhere.com/)
 
-## 【10%】 加分项
+## 加分项
 ### viewlog日志
 [日志](http://huangyuhui.pythonanywhere.com/viewlog)
 
