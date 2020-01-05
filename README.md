@@ -54,7 +54,7 @@
 - world_unemployment.html
     - 用户输出结果页使用 def yi_yu_select_4() -> 'html'#此为失业率页
 
-### Python档描述 30%
+### Python档描述 
 [python档下载](https://github.com/uweier/python_pj/blob/master/app.py)
 
 **app.py为唯一app档，可双击执行或於命令行输入python app.py执行**
