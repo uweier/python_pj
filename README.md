@@ -4,21 +4,21 @@
 
 **使用Python 搭建Flask网站**
 
-请点击查看主要功能：
+主要功能：
 - [首页点击按钮跳转页面](http://huangyuhui.pythonanywhere.com/)
-- [输入文本框筛选国家](http://huangyuhui.pythonanywhere.com/world_hbl)
+- 输入文本框筛选国家
 - [日志](http://huangyuhui.pythonanywhere.com/viewlog)
 
 页面：
-- [首页](http://huangyuhui.pythonanywhere.com/)
-- [总人数地图页](http://huangyuhui.pythonanywhere.com/world_number)
-- [患病率地图页](http://huangyuhui.pythonanywhere.com/world_hbl)
-    - [结果跳转页](http://huangyuhui.pythonanywhere.com/search)
-- [男性与女性人数页](http://huangyuhui.pythonanywhere.com/world_man_woman)
-- [失业率页](http://huangyuhui.pythonanywhere.com/world_unemployment)
-- [妇女生育孩子数页](http://huangyuhui.pythonanywhere.com/world_give_birth)
-- [世界人均GDP页](http://huangyuhui.pythonanywhere.com/world_gdp)
-- [总结页](http://huangyuhui.pythonanywhere.com/summary)
+- 首页
+- 总人数地图页
+- 患病率地图页
+    - 结果跳转页
+- 男性与女性人数页
+- 失业率页
+- 妇女生育孩子数页
+- 世界人均GDP页
+- 总结页
 
 ## github文档（templates、static、app.py、数据文档）
 - [templates](https://github.com/uweier/python_pj/tree/master/templates)
@@ -101,11 +101,7 @@ def yi_yu_select_4() -> 'html':
 
 ## 数据交互
 
-### 是否含有复杂数据结构的循环（列表循环、字典循环、集合循环） （20%）
-
-### 是否含有合适的数据结构嵌套（20%）
-
-### 是否含有合适的推导式（20%）
+### 推导式与if……else……
 pyecharts数据处理时：
 ```
 # 推导式 处理x轴
