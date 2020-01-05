@@ -1,39 +1,33 @@
-# 世界抑郁症情况及其相关因素研究
+# 世界抑郁症情况及其相关因素研究之python项目
 
 （图片加载较慢，若网络不佳请多刷新，感谢~）
 
-使用Python 搭建Flask网站
+**使用Python 搭建Flask网站**
 
 请点击查看主要功能：
-- [首页点击按钮跳转页面](https://github.com/uweier/python_pj/blob/master/image/shouye.png)
-- [输入文本框筛选国家](https://github.com/uweier/python_pj/blob/master/image/number.png)
-    - [输出的结果](https://github.com/uweier/python_pj/blob/master/image/number_result.png)
-- [下拉列表筛选国家](https://github.com/uweier/python_pj/blob/master/image/gongzuo.png)
-    - [输出的结果](https://github.com/uweier/python_pj/blob/master/image/gongzuo_result.png)
+- [首页点击按钮跳转页面](http://huangyuhui.pythonanywhere.com/)
+- [输入文本框筛选国家](http://huangyuhui.pythonanywhere.com/world_hbl)
+- [日志](http://huangyuhui.pythonanywhere.com/viewlog)
 
-## 【10%】 github文档（templates、static、app.py、数据文档）
+## github文档（templates、static、app.py、数据文档）
 - [templates]()
 - [static]()
 - [app.py]()
 - [data]()
 
-## 【20%】 技术文档书写
-### HTML档描述 30%
+## 技术文档书写
+### HTML档描述
 - 所有的HTML文件放置在templates文件夹中，其中base.html为基模板，其余html皆继承该基模板。
 - base.html
     - 基本flask html模版档
     - 设定样式 href="static/hf.css"
 - entry.html
-    - flask html模版档，用户输入页使用 def index() 'html': #使用了 entry.html
+    - flask html模版档，用户输入页使用 def index() ->'html': #使用了 entry.html
 - summary.html
     - 用户输出结果页使用 def yi_yu_select_9() -> 'html': #使用了 summary.html
 - viewlog.html
     - 用户输出结果页使用 def view_the_log() -> 'html': #使用了 viewlog.html
     - viewlog.html对应系统日志。
-- world_education.html
-    - 用户输入/输出结果页使用 def yi_yu_select_5() -> 'html':#使用了 world_education.html
-    - world_education_result.html
-      - 用户输出结果页使用 def yi_yu_select_6() -> 'html':#使用了 world_education_result.html
 - world_gdp.html
     - 用户输出结果页使用 def yi_yu_select_8() -> 'html':#使用了 world_gdp.html
 - world_give_birth.html
@@ -45,22 +39,16 @@
 - world_man_woman.html
     - 用户输出结果页使用 def yi_yu_select_3() -> 'html':#使用了 world_man_woman.html
 - world_number.html
-    - 用户输入/输出结果页使用 def yi_yu_select_1() -> 'html':#使用了 world_number.html
-    - world_number_result.html
-      - 用户输出结果页使用 def do_search_0() -> 'html':#使用了 world_number_result.html
+    - 用户输出结果页使用 def yi_yu_select_1() -> 'html':#使用了 world_number.html
 - world_unemployment.html
     - 用户输出结果页使用 def yi_yu_select_4() -> 'html':#使用了 world_unemployment.html
-
-所有HTML文件如下图所示：
-
-![HTML文件](https://github.com/uweier/python_pj/blob/master/image/html_ms.png)
 
 ### Python档描述 30%
 [python档下载]()
 
 **app.py为唯一app档，可双击执行或於命令行输入python app.py执行**
 
-1. 安装并导入pandas、pyecharts、cufflinks、plotly等第三方包
+1. 安装并导入pandas、pyecharts等第三方包
 2. pandas读csv文件
 3. pyecharts的模块画地图、条形图等，并将部分图以html文件的方式导出
 4. 安装Flask环境，导入flask和render_template函数，创建Flask对象实例
@@ -129,8 +117,8 @@ def index() -> 'html':
 pyecharts数据处理时：
 ```
 # 推导式 处理x轴
-x轴 = [int(x) for x in df0.columns.values[1:]]
-x轴_zx = [str(x) for x in x轴]
+x_z = [int(x) for x in df0.columns.values[1:]]
+x_z_zx = [str(x) for x in x_z]
 ```
 交互代码的改写：
 ```
@@ -144,7 +132,7 @@ x轴_zx = [str(x) for x in x轴]
     contents = [countries[search] if search in countries.keys() else '您搜索的结果不存在！！']
 ```
 
-### 是否含有适当的条件判断（20%）
+
 
 ### python 文档与html文档的数据交互（20%）
 数据的传输(中介变量)
@@ -183,11 +171,6 @@ def yi_yu_select_6() -> 'html':
                             the_res_6 = data_str6,)
 ```
 
-## 【10%】 自定义函数与模块功能（是否存在与合理)
-
-### 函数和模块符合python PEP8标准（50%）
-
-### 功能具有可扩展和丰富性（50%）
 
 ## 【10%】 HTML界面
 
@@ -196,9 +179,12 @@ def yi_yu_select_6() -> 'html':
 ### 符合jinja2标准（20%）
 
 ## 【10%】上传pythonanywhere/提交域名完善的个人网站
+[http://huangyuhui.pythonanywhere.com/](http://huangyuhui.pythonanywhere.com/)
 
 ## 【10%】 加分项
 ### viewlog日志
+[日志](http://huangyuhui.pythonanywhere.com/viewlog)
+
 第一次查找“地区”
 
 ![第一次输入“地区”](https://github.com/uweier/python_pj/blob/master/image/viewlog1.png)
