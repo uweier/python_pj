@@ -9,11 +9,22 @@
 - [输入文本框筛选国家](http://huangyuhui.pythonanywhere.com/world_hbl)
 - [日志](http://huangyuhui.pythonanywhere.com/viewlog)
 
+页面：
+- [首页](http://huangyuhui.pythonanywhere.com/)
+- [总人数地图页](http://huangyuhui.pythonanywhere.com/world_number)
+- [患病率地图页](http://huangyuhui.pythonanywhere.com/world_hbl)
+    - [结果跳转页](http://huangyuhui.pythonanywhere.com/search)
+- [男性与女性人数页](http://huangyuhui.pythonanywhere.com/world_man_woman)
+- [失业率页](http://huangyuhui.pythonanywhere.com/world_unemployment)
+- [妇女生育孩子数页](http://huangyuhui.pythonanywhere.com/world_give_birth)
+- [世界人均GDP页](http://huangyuhui.pythonanywhere.com/world_gdp)
+- [总结页](http://huangyuhui.pythonanywhere.com/summary)
+
 ## github文档（templates、static、app.py、数据文档）
-- [templates]()
-- [static]()
-- [app.py]()
-- [data]()
+- [templates](https://github.com/uweier/python_pj/tree/master/templates)
+- [static](https://github.com/uweier/python_pj/tree/master/static)
+- [app.py](https://github.com/uweier/python_pj/blob/master/app.py)
+- [data](https://github.com/uweier/python_pj/tree/master/data)
 
 ## 技术文档书写
 ### HTML档描述
@@ -44,7 +55,7 @@
     - 用户输出结果页使用 def yi_yu_select_4() -> 'html':#使用了 world_unemployment.html
 
 ### Python档描述 30%
-[python档下载]()
+[python档下载](https://github.com/uweier/python_pj/blob/master/app.py)
 
 **app.py为唯一app档，可双击执行或於命令行输入python app.py执行**
 
