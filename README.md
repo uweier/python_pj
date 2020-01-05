@@ -33,26 +33,26 @@
     - 基本flask html模版档
     - 设定样式 href="static/hf.css"
 - entry.html
-    - flask html模版档，用户输入页使用 def index() ->'html': #使用了 entry.html
+    - flask html模版档，用户输入页使用 def index() ->'html'#此为首页
 - summary.html
-    - 用户输出结果页使用 def yi_yu_select_9() -> 'html': #使用了 summary.html
+    - 用户输出结果页使用 def yi_yu_select_9() -> 'html'#此为总结页
 - viewlog.html
-    - 用户输出结果页使用 def view_the_log() -> 'html': #使用了 viewlog.html
+    - 用户输出结果页使用 def view_the_log() -> 'html'#此为日志页
     - viewlog.html对应系统日志。
 - world_gdp.html
-    - 用户输出结果页使用 def yi_yu_select_8() -> 'html':#使用了 world_gdp.html
+    - 用户输出结果页使用 def yi_yu_select_8() -> 'html'#此为世界人均GDP页
 - world_give_birth.html
-    - 用户输出结果页使用 def yi_yu_select_7() -> 'html':#使用了 world_give_birth.html
+    - 用户输出结果页使用 def yi_yu_select_7() -> 'html'#此为妇女生育孩子数页
 - world_hbl.html
-    - 用户输入/输出结果页使用 def yi_yu_select_2() -> 'html':#使用了 world_hbl.html
+    - 用户输入/输出结果页使用 def yi_yu_select_2() -> 'html':#此为患病率地图页
     - world_hbl_result.html
-      - 用户输出结果页使用 def do_search_1() -> 'html':#使用了 world_hbl_result.html
+      - 用户输出结果页使用 def do_search_1() -> 'html'
 - world_man_woman.html
-    - 用户输出结果页使用 def yi_yu_select_3() -> 'html':#使用了 world_man_woman.html
+    - 用户输出结果页使用 def yi_yu_select_3() -> 'html'#此为男性与女性人数页
 - world_number.html
-    - 用户输出结果页使用 def yi_yu_select_1() -> 'html':#使用了 world_number.html
+    - 用户输出结果页使用 def yi_yu_select_1() -> 'html'#此为总人数地图页
 - world_unemployment.html
-    - 用户输出结果页使用 def yi_yu_select_4() -> 'html':#使用了 world_unemployment.html
+    - 用户输出结果页使用 def yi_yu_select_4() -> 'html'#此为失业率页
 
 ### Python档描述 30%
 [python档下载](https://github.com/uweier/python_pj/blob/master/app.py)
@@ -87,14 +87,14 @@ def yi_yu_select_4() -> 'html':
 2. 前端浏览器web 请求：访问 http://127.0.0.1:8004/ 启动前端web 请求
 3. 后端伺服器web 响应：app.py 中 执行 了@app.route('/') 下的 index()函数，产生《世界抑郁症情况及其相关因素研究》的HTML页面 
 4. 前端浏览器收到web 响应：出现HTML，有HTML5表单的输入 input 类型(type) 为"SUBMIT"，变数名称(name)分别为"the_region_selected_1"，"the_region_selected_2"，"the_region_selected_3"，"the_region_selected_4"，"the_region_selected_7"，"the_region_selected_8"，"the_region_selected_9"
-5. 前端浏览器web 请求：用户选取不同按键，点击后，则产生新的web 请求。以第一个为例world_number，按照form元素中定义的method='POST' action='/world_number'，以POST为方法，动作为/world_number的web 请求
+5. 前端浏览器web 请求：用户选取不同按键，点击后，则产生新的web 请求。以第一个world_number为例，按照form元素中定义的method='POST' action='/world_number'，以POST为方法，动作为/world_number的web 请求
 6. 后端服务器收到用户web 请求，匹配到@app.route('/world_number', methods=['POST'])的函数 yi_yu_select_1()
 7. def yi_yu_select_1() 函数，只是将前面pyecharts输出的html档读入，并存入plot_all_1，然后把用户提交的数据，以flask 模块request.form['the_region_selected_1']取到Web 请求中,使用flask模块render_template 函数把world_number.html模版输出。其中the_plot_all_1的值，对应plot_all_1之值。
 8. 前端浏览器收到web 响应：world_number.html中the_plot_all_1的值正确的产生的话，前端浏览器会收到正确响应，看到地图。
 
 
 
-
+简单描述：
 - 【首页】点击按钮“总人数”、“患病率”，“男性与女性患者人数”，“患病率与失业率对比”，“每个妇女生育孩子数”，“世界人均GDP情况”、“主题观点总结”，即可跳转到对应页面；在各个页面点击按钮“首页”，即可跳转到【首页】。
 - 【前端页面】点击按钮“患病率”，即可跳转到【患病率页面】；【患病率页面】在“搜索框”输入地区名称，点击“确定”，页面即可跳转到【搜索结果页面】；【患病率页面】点击按钮“首页”，即可跳转到【前端首页】。
 - 【患病率页面】中，点击“播放”按键，即可实现地图轮播功能。
