@@ -75,20 +75,11 @@ def yi_yu_select_4() -> 'html':
 1. 后端伺服器启动：执行 app.py 启动后端伺服器，等待web请求。启动成功应出现：* Running on http://127.0.0.1:8004/ (Press CTRL+C to quit)
 2. 前端浏览器web 请求：访问 http://127.0.0.1:8004/ 启动前端web 请求
 3. 后端伺服器web 响应：app.py 中 执行 了@app.route('/') 下的 index()函数，产生《世界抑郁症情况及其相关因素研究》的HTML页面 
-```
-def index() -> 'html':
-    data_str = df_z.to_html()
-    title = '世界抑郁症情况及其相关因素研究'
-    return render_template('entry.html',
-                           the_title = title,
-                           the_res = data_str,
-                          )  
-```
-4.前端浏览器收到web 响应：出现HTML，有HTML5表单的输入 input 类型(type) 为"SUBMIT"，变数名称(name)为"the_region_selected_1"
-5.前端浏览器web 请求：用户选取不同按键，点击后，则产生新的web 请求，按照form元素中定义的method='POST' action='/world_number'，以POST为方法，动作为/world_number的web 请求
-6.后端服务器收到用户web 请求，匹配到@app.route('/world_number'', methods=['POST'])的函数 yi_yu_select_1()
-
-
+4.前端浏览器收到web 响应：出现HTML，有HTML5表单的输入 input 类型(type) 为"SUBMIT"，变数名称(name)分别为"the_region_selected_1"，"the_region_selected_2"，"the_region_selected_3"，"the_region_selected_4"，"the_region_selected_7"，"the_region_selected_8"，"the_region_selected_9"
+5.前端浏览器web 请求：用户选取不同按键，点击后，则产生新的web 请求。以第一个为例，按照form元素中定义的method='POST' action='/world_number'，以POST为方法，动作为/world_number的web 请求
+6.后端服务器收到用户web 请求，匹配到@app.route('/world_number', methods=['POST'])的函数 yi_yu_select_1()
+7.def yi_yu_select_1() 函数，只是将前面pyecharts输出的html档读入，并存入plot_all_1，然后把用户提交的数据，以flask 模块request.form['the_region_selected_1']取到Web 请求中,使用flask模块render_template 函数把world_number.html模版输出。其中the_plot_all_1的值，对应plot_all_1之值。
+8.前端浏览器收到web 响应：world_number.html中the_plot_all_1的值正确的产生的话，前端浏览器会收到正确响应，看到地图。
 
 
 - Python代码模块和HTML代码块遵循Flask Jinja2规则，模块继承render_template(xxx.html,附加参数(传值给Web xxx.html界面))
@@ -97,15 +88,8 @@ def index() -> 'html':
         2. 传递函数运行的过程
 
 
-- 【前端页面】点击按钮“总人数”，即可跳转到【总人数页面】；【总人数页面】在“搜索框”输入地区名称，点击“确定”，页面即可跳转到【搜索结果页面】；【总人数页面】点击按钮“首页”，即可跳转到【前端首页】。
-- 【总人数页面】中，点击“播放”按键，即可实现地图轮播功能。
-
-- 【前端页面】点击“患者的学历/就业情况”，即可跳转到【受教育程度和就业状况页面】；【受教育程度和就业状况页面】中点击“下拉菜单”选择地区名称，点击“筛选”，即可跳转到【对应地区数据图和表格结果页面】；【受教育程度和就业状况页面】点击按钮“首页”，即可跳转到【前端首页】。
-
-
-- 其他页面动作与以上相似。
-
-
+- 【前端页面】点击按钮“患病率”，即可跳转到【患病率页面】；【患病率页面】在“搜索框”输入地区名称，点击“确定”，页面即可跳转到【搜索结果页面】；【患病率页面】点击按钮“首页”，即可跳转到【前端首页】。
+- 【患病率页面】中，点击“播放”按键，即可实现地图轮播功能。
 
 ## 【40%】 数据交互（数据复杂度（是否存在与合理））
 
