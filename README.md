@@ -82,7 +82,7 @@ def yi_yu_select_4() -> 'html':
 ```
 7. return render_template，将后端的值传到前端HTML中。
 
-### Web App动作描述 40%
+### Web App动作描述 
 1. 后端伺服器启动：执行 app.py 启动后端伺服器，等待web请求。启动成功应出现：* Running on http://127.0.0.1:8004/ (Press CTRL+C to quit)
 2. 前端浏览器web 请求：访问 http://127.0.0.1:8004/ 启动前端web 请求
 3. 后端伺服器web 响应：app.py 中 执行 了@app.route('/') 下的 index()函数，产生《世界抑郁症情况及其相关因素研究》的HTML页面 
